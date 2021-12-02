@@ -3,7 +3,7 @@
 # 2021-12-01
 
 numbers = []
-with open('./inputs/1.txt') as f:
+with open('./2021/inputs/1.txt') as f:
     for line in f:
         numbers.append(int(line))
 

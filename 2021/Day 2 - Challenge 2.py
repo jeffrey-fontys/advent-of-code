@@ -1,13 +1,13 @@
 # Day 2 - Challenge 2
 # Made by Jeffrey Derksen
-# 2021-12-01
+# 2021-12-02
 
 x = 0
 y = 0
 aim = 0
 
 values = []
-with open('./inputs/2.txt') as f:
+with open('./2021/inputs/2.txt') as f:
     for line in f:
         values.append(line.split(sep=" "))
 
