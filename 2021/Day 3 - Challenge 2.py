@@ -2,10 +2,9 @@
 # Made by Jeffrey Derksen
 # 2021-12-03
 
-bytes = []
 with open('./2021/inputs/3.txt') as f:
     for line in f:
-        bytes.append(line)
+        bytes = f.readlines()
 
 def calculate_rating(priority):
     stored_bytes = bytes[:]
