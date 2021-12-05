@@ -21,28 +21,19 @@ class Board:
                 if square.number == number: square.is_checked = True
     
     def did_i_win(self):
-        count = 0
         for row in self.rows:
             for square in row:
-                if square.is_checked == True:
-                    count += 1
-                    if count == 5:
-                        self.has_won = True
-                        return True
-                else:
-                    count = 0
-                    break
+                if square.is_checked == False: break
+            else:
+                self.has_won = True
+                return True
         
         for i in range(5):
             for j in range(5):
-                if self.rows[j][i].is_checked == True:
-                    count += 1
-                    if count == 5:
-                        self.has_won = True
-                        return True
-                else:
-                    count = 0
-                    break
+                if self.rows[j][i].is_checked == False: break
+            else:
+                self.has_won = True 
+                return True
         
         return False # Chula!
 
