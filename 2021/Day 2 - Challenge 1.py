@@ -1,6 +1,7 @@
-# Day 2 - Challenge 1
+# Advent of Code 2021
+# Day 2: Dive!
+# Part One
 # Made by Jeffrey Derksen
-# 2021-12-02
 
 x = 0
 y = 0

@@ -1,6 +1,7 @@
-# Day 4 - Challenge 1
+# Advent of Code 2021
+# Day 4: Giant Squid
+# Part One
 # Made by Jeffrey Derksen
-# 2021-12-04
 
 class Square:
 

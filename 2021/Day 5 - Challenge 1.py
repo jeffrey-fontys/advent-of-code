@@ -1,6 +1,7 @@
-# Day 5 - Challenge 1
+# Advent of Code 2021
+# Day 5: Hydrothermal Venture
+# Part One
 # Made by Jeffrey Derksen
-# 2021-12-05
 
 class Line:
 

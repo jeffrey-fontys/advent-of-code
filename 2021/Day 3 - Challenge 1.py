@@ -1,6 +1,7 @@
-# Day 3 - Challenge 1
+# Advent of Code 2021
+# Day 3: Binary Diagnostic
+# Part One
 # Made by Jeffrey Derksen
-# 2021-12-03
 
 with open('./2021/inputs/3.txt') as f:
     for line in f:

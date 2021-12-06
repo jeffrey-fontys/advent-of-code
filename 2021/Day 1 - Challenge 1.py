@@ -1,6 +1,7 @@
-# Day 1 - Challenge 1
+# Advent of Code 2021
+# Day 1: Sonar Sweep
+# Part One
 # Made by Jeffrey Derksen
-# 2021-12-01
 
 numbers = []
 with open('./2021/inputs/1.txt') as f:
