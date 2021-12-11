@@ -18,10 +18,15 @@ for y in range(last_row + 1):
     for x in range(last_col + 1):
         number = map[y][x]
         low_point = True
-        if y != 0 and number >= map[y - 1][x]: low_point = False
-        if x != last_col and number >= map[y][x + 1]: low_point = False
-        if y != last_row and number >= map[y + 1][x]: low_point = False
-        if x != 0 and number >= map[y][x - 1]: low_point = False
-        if low_point: sum_risk_level += number + 1
+        if y != 0 and number >= map[y - 1][x]:
+            low_point = False
+        if x != last_col and number >= map[y][x + 1]:
+            low_point = False
+        if y != last_row and number >= map[y + 1][x]:
+            low_point = False
+        if x != 0 and number >= map[y][x - 1]:
+            low_point = False
+        if low_point:
+            sum_risk_level += number + 1
 
 print(f'The sum of risk levels is {sum_risk_level}.')

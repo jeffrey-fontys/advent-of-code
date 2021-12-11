@@ -10,49 +10,59 @@ class Square:
     def __init__(self, number):
         self.number = number
 
+
 class Board:
     has_won = False
 
     def __init__(self, rows):
         self.rows = rows
-    
+
     def check_square(self, number):
         for row in self.rows:
             for square in row:
-                if square.number == number: square.is_checked = True
-    
+                if square.number == number:
+                    square.is_checked = True
+
     def did_i_win(self):
         for row in self.rows:
             for square in row:
-                if square.is_checked == False: break
+                if square.is_checked is False:
+                    break
             else:
                 self.has_won = True
                 return True
-        
+
         for i in range(5):
             for j in range(5):
-                if self.rows[j][i].is_checked == False: break
+                if self.rows[j][i].is_checked is False:
+                    break
             else:
-                self.has_won = True 
+                self.has_won = True
                 return True
-        
-        return False # Chula!
+
+        return False  # Chula!
 
     def sum_unchecked(self):
         sum = 0
         for row in self.rows:
             for square in row:
-                if square.is_checked == False: sum += square.number
+                if square.is_checked is False:
+                    sum += square.number
         return sum
 
+
 scores = []
+
+
 def draw_numbers():
     for number in numbers_drawn:
         for board in boards:
-            if board.has_won == True: continue
+            if board.has_won is True:
+                continue
             board.check_square(number)
             if board.did_i_win():
                 scores.append(number * board.sum_unchecked())
+
 
 boards = []
 with open('./2021/inputs/4.txt') as f:
@@ -60,12 +70,12 @@ with open('./2021/inputs/4.txt') as f:
     row_count = 0
     rows = []
     for line in f:
-        if first_line == True:
+        if first_line is True:
             numbers_drawn = [int(i) for i in line.split(sep=",")]
             first_line = False
         else:
             if line != "\n":
-                
+
                 if row_count == 5:
                     row_count = 0
                     boards.append(Board(rows))

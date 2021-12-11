@@ -4,10 +4,10 @@
 # Made by Jeffrey Derksen
 
 class Lanternfish:
-    
+
     def __init__(self, age):
         self.age = age
-    
+
     def will_spawn(self) -> bool:
         if self.age == 0:
             self.age = 6
@@ -15,6 +15,7 @@ class Lanternfish:
         else:
             self.age -= 1
             return False
+
 
 with open('./2021/inputs/6.txt') as f:
     for line in f:
@@ -29,6 +30,7 @@ for i in range(days):
     for lanternfish in lanternfish_list:
         if lanternfish.will_spawn():
             new_fish += 1
-    for j in range(new_fish): lanternfish_list.append(Lanternfish(8))
+    for j in range(new_fish):
+        lanternfish_list.append(Lanternfish(8))
 
 print(f"After {days} days there will be {len(lanternfish_list)} lanternfish.")

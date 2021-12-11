@@ -18,11 +18,17 @@ for y in range(last_row + 1):
     for x in range(last_col + 1):
         number = map[y][x]
         low_point = True
-        if y != 0 and number >= map[y - 1][x]: low_point = False
-        if x != last_col and number >= map[y][x + 1]: low_point = False
-        if y != last_row and number >= map[y + 1][x]: low_point = False
-        if x != 0 and number >= map[y][x - 1]: low_point = False
-        if low_point: low_points.append([y,x])
+        if y != 0 and number >= map[y - 1][x]:
+            low_point = False
+        if x != last_col and number >= map[y][x + 1]:
+            low_point = False
+        if y != last_row and number >= map[y + 1][x]:
+            low_point = False
+        if x != 0 and number >= map[y][x - 1]:
+            low_point = False
+        if low_point:
+            low_points.append([y, x])
+
 
 # Flood fill algorithm, see https://en.wikipedia.org/wiki/Flood_fill.
 def flood_fill(y, x):
@@ -36,11 +42,12 @@ def flood_fill(y, x):
 
     map[y][x] = 10
     count = 1
-    count += flood_fill(y + 1, x) # Recurse and look below.
-    count += flood_fill(y - 1, x) # Recurse and look above.
-    count += flood_fill(y, x + 1) # Recurse and look right.
-    count += flood_fill(y, x - 1) # Recurse and look left.
+    count += flood_fill(y + 1, x)  # Recurse and look below.
+    count += flood_fill(y - 1, x)  # Recurse and look above.
+    count += flood_fill(y, x + 1)  # Recurse and look right.
+    count += flood_fill(y, x - 1)  # Recurse and look left.
     return count
+
 
 basins = []
 for low_point in low_points:
@@ -52,4 +59,5 @@ for low_point in low_points:
 basins.sort(reverse=True)
 largest_basins_multiplied = basins[0] * basins[1] * basins[2]
 
-print(f'The sizes of the three largest basins multiplied is {largest_basins_multiplied}.')
+print('The sizes of the three largest basins multiplied '
+      f'is {largest_basins_multiplied}.')

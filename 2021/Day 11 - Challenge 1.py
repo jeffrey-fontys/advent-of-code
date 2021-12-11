@@ -9,19 +9,21 @@ class Octopus:
 
     def __init__(self, energy):
         self.energy = energy
-    
+
     def flash(self, matrix, x, y):
-        if self.energy <= 9 or self.has_flashed == True:
+        if self.energy <= 9 or self.has_flashed:
             return
 
         self.has_flashed = True
-        NEIGHBOURS = [[x - 1, y - 1], [x , y - 1], [x + 1, y - 1], [x + 1, y],
-            [x + 1, y + 1], [x, y + 1], [x - 1, y + 1], [x - 1, y]]
+        NEIGHBOURS = [[x - 1, y - 1], [x, y - 1], [x + 1, y - 1], [x + 1, y],
+                      [x + 1, y + 1], [x, y + 1], [x - 1, y + 1], [x - 1, y]]
         for neighbour in NEIGHBOURS:
             x, y = neighbour
-            if (x >= 0 and x < len(matrix[0])) and (y >= 0 and y < len(matrix)):
+            if (x >= 0 and x < len(matrix[0])) and \
+                    (y >= 0 and y < len(matrix)):
                 matrix[y][x].energy += 1
                 matrix[y][x].flash(matrix, x, y)
+
 
 matrix = []
 with open('./2021/inputs/11.txt') as f:
@@ -40,12 +42,12 @@ for _ in range(100):
     for y in range(len(matrix)):
         for x in range(len(matrix[0])):
             matrix[y][x].flash(matrix, x, y)
-    
+
     for row in matrix:
         for octopus in row:
             if octopus.has_flashed:
                 flashes += 1
                 octopus.energy = 0
                 octopus.has_flashed = False
-            
+
 print(f'Amount of flashes afer 100 steps: {flashes}')
