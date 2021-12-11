@@ -5,8 +5,8 @@
 
 import statistics
 
-allowed_pairs = {'(':')', '[':']', '{':'}', '<':'>'}
-score_values = {')':1, ']':2, '}':3, '>':4}
+ALLOWED_PAIRS = {'(':')', '[':']', '{':'}', '<':'>'}
+SCORE_VALUES = {')':1, ']':2, '}':3, '>':4}
 scores = []
         
 def scan_line(line):
@@ -16,10 +16,10 @@ def scan_line(line):
         if line[i] not in [')',']','}','>']:
             result = block_check(line, i + 1, line[i])
             if result == 1: return 0
-            elif result == 2: end_blocks.append(allowed_pairs[line[i]])
+            elif result == 2: end_blocks.append(ALLOWED_PAIRS[line[i]])
     end_blocks.reverse()
     for end_block in end_blocks:
-        score = score * 5 + score_values[end_block]
+        score = score * 5 + SCORE_VALUES[end_block]
     return score
 
 def block_check(line, start, block_open):
@@ -27,7 +27,7 @@ def block_check(line, start, block_open):
     for i in range(start, len(line)):
         if line[i] not in [')',']','}','>']:
             opens_passed += 1
-        elif opens_passed == 0 and line[i] == allowed_pairs[block_open]:
+        elif opens_passed == 0 and line[i] == ALLOWED_PAIRS[block_open]:
             return 0
         elif opens_passed == 0: return 1
         else: opens_passed -= 1
@@ -38,7 +38,6 @@ with open('./2021/inputs/10.txt') as f:
         result = scan_line(line.strip())
         if result > 0: scores.append(result)
 
-scores.sort()
-median = statistics.median(scores)
+MEDIAN = statistics.median(scores)
 
-print(f'The middle score is {median}.')
+print(f'The middle score is {MEDIAN}.')

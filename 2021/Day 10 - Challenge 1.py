@@ -3,8 +3,8 @@
 # Part One
 # Made by Jeffrey Derksen
 
-allowed_pairs = {'(':')', '[':']', '{':'}', '<':'>'}
-scores = {')':3, ']':57, '}':1197, '>':25137}
+ALLOWED_PAIRS = {'(':')', '[':']', '{':'}', '<':'>'}
+SCORES = {')':3, ']':57, '}':1197, '>':25137}
         
 def scan_line(line):
     for i in range(len(line)):
@@ -18,9 +18,9 @@ def block_check(line, start, block_open):
     for i in range(start, len(line)):
         if line[i] not in [')',']','}','>']:
             opens_passed += 1
-        elif opens_passed == 0 and line[i] == allowed_pairs[block_open]:
+        elif opens_passed == 0 and line[i] == ALLOWED_PAIRS[block_open]:
             return 0
-        elif opens_passed == 0: return scores[line[i]]
+        elif opens_passed == 0: return SCORES[line[i]]
         else: opens_passed -= 1
     return 0
 
