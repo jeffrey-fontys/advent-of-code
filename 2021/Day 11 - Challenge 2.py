@@ -10,11 +10,10 @@ class Octopus:
     def __init__(self, energy):
         self.energy = energy
     
-    def will_it_flash(self, matrix, x, y):
-        if self.energy > 9 and self.has_flashed == False:
-            self.flash(matrix, x, y)
-    
     def flash(self, matrix, x, y):
+        if self.energy <= 9 or self.has_flashed == True:
+            return
+
         self.has_flashed = True
         NEIGHBOURS = [[x - 1, y - 1], [x , y - 1], [x + 1, y - 1], [x + 1, y],
             [x + 1, y + 1], [x, y + 1], [x - 1, y + 1], [x - 1, y]]
@@ -22,7 +21,7 @@ class Octopus:
             x, y = neighbour
             if (x >= 0 and x < len(matrix[0])) and (y >= 0 and y < len(matrix)):
                 matrix[y][x].energy += 1
-                matrix[y][x].will_it_flash(matrix, x, y)
+                matrix[y][x].flash(matrix, x, y)
 
 matrix = []
 with open('./2021/inputs/11.txt') as f:
@@ -41,7 +40,7 @@ while True:
 
     for y in range(len(matrix)):
         for x in range(len(matrix[0])):
-            matrix[y][x].will_it_flash(matrix, x, y)
+            matrix[y][x].flash(matrix, x, y)
     
     for row in matrix:
         for octopus in row:
