@@ -19,8 +19,7 @@ class Octopus:
                       [x + 1, y + 1], [x, y + 1], [x - 1, y + 1], [x - 1, y]]
         for neighbour in NEIGHBOURS:
             x, y = neighbour
-            if (x >= 0 and x < len(matrix[0])) and \
-                    (y >= 0 and y < len(matrix)):
+            if 0 <= x < len(matrix[0]) and 0 <= y < len(matrix):
                 matrix[y][x].energy += 1
                 matrix[y][x].flash(matrix, x, y)
 
