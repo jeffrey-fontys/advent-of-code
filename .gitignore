@@ -150,6 +150,3 @@ cython_debug/
 
 # Test input
 test.txt
-
-# Performance script
-performance.py
