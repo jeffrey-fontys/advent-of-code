@@ -14,20 +14,21 @@ class Node:
         return self.name
 
 
-def make_paths(start: Node, end: Node, path=[]):
+def count_paths(start: Node, end: Node, visited=[]):
 
-    if start in path and start.small_node:
-        return
+    if start in visited and start.small_node:
+        return 0
 
-    path.append(start)
+    visited.append(start)
 
     if start == end:
-        total_paths.append(path)
-        return path
+        return 1
 
-    paths = [list(path) for _ in range(len(start.connections))]
-    for i, next_node in enumerate(start.connections):
-        make_paths(next_node, end, paths[i])
+    count = 0
+    for next_node in start.connections:
+        count += count_paths(next_node, end, list(visited))
+
+    return count
 
 
 nodes = []
@@ -51,6 +52,5 @@ for connection in input:
 start_node = next(x for x in nodes if 'start' == x.name)
 end_node = next(x for x in nodes if 'end' == x.name)
 
-total_paths = []
-make_paths(start_node, end_node)
-print('Total paths:', len(total_paths))
+total_paths = count_paths(start_node, end_node)
+print('Total paths:', total_paths)
