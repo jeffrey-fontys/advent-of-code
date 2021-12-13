@@ -8,7 +8,7 @@ def fold(fold_axis: str, fold_location: int) -> None:
         index = 0
     else:
         index = 1
-    
+
     for coordinate in coordinates:
         if coordinate[index] > fold_location:
             coordinate[index] -= 2 * (coordinate[index] - fold_location)
