@@ -6,6 +6,7 @@
 from collections import Counter
 
 insertion_rules = {}
+pairs_template = {}
 elements = {}
 with open('./2021/inputs/14.txt') as f:
     section = 0
@@ -17,15 +18,11 @@ with open('./2021/inputs/14.txt') as f:
         else:
             split = line.strip().split(sep=' -> ')
             insertion_rules.update({split[0]: split[0][0] + split[1]})
-            if split[1] not in elements:
-                elements.update({split[1]: 0})
+            pairs_template.update({split[0]: 0})
+            elements.update({split[1]: 0})
 
 for element in template:
     elements[element] += 1
-
-pairs_template = {}
-for rule in insertion_rules:
-    pairs_template.update({rule: 0})
 
 pairs = pairs_template.copy()
 for i in range(len(template) - 1):
