@@ -1,6 +1,6 @@
 # Advent of Code 2022
 # Day 2: Rock Paper Scissors
-# Part One
+# Part Two
 # Made by Jeffrey Derksen
 
 # X = lose(0), Y = draw(3), Z = win(6)
